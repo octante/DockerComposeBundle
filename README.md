@@ -8,8 +8,8 @@ This bundle has a set of resources to manage docker compose yml configuration fi
 
 ## Documentation ##
 
-[Read the documentation in Resources/doc/](https://github.com/octante/DockerComposeBundle/blob/master/Resources/doc/index.md)
+[Read the documentation in Resources/doc/](https://github.com/octante/docker-compose-bundle/blob/master/Resources/doc/index.md)
 
 ## License ##
 
-See [LICENSE](https://github.com/octante/DockerComposeBundle/blob/master/LICENSE).
+See [LICENSE](https://github.com/octante/docker-compose-bundle/blob/master/LICENSE).
