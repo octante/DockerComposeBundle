@@ -1,0 +1,6 @@
+services:
+    octante.docker_compose_yml_builder:
+        class: Octante\DockerComposeBundle\Services\DockerComposeYmlBuilder
+
+    octante.docker_compose_yml_plain:
+        class: Octante\DockerComposeBundle\Services\DockerComposeYmlPlain

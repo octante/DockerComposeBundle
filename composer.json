@@ -1,0 +1,19 @@
+{
+    "name": "octante/docker-compose-bundle",
+    "description": "This bundle provides tools to build a docker compose yml configuration file",
+    "keywords": ["docker compose", "docker compose builder"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Issel Guberna",
+            "email": "issel_guberna@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Octante\\DockerComposeBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev"
+}
