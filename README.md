@@ -1,6 +1,6 @@
 # DockerComposeBundle
 
-[![Build Status Master](https://travis-ci.org/octante/DockerComposeBundle.svg?branch=master)](https://travis-ci.org/octante/NatsBundle)
+[![Build Status Master](https://travis-ci.org/octante/DockerComposeBundle.svg?branch=master)](https://travis-ci.org/octante/DockerComposeBundle)
 
 
 This bundle is under development. Don't use it till a stable version.
