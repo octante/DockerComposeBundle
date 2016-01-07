@@ -30,7 +30,7 @@ class DockerComposeExternalLinks
     }
 
     /**
-     * Remove link from external links
+     * Remove link from external links.
      *
      * @param $externalLink
      */

@@ -26,11 +26,11 @@ class DockerComposeExposedPorts
      */
     public function addExposedPort($exposedPort)
     {
-        $this->exposedPorts[$exposedPort] = "\"".$exposedPort."\"";
+        $this->exposedPorts[$exposedPort] = '"' . $exposedPort . '"';
     }
 
     /**
-     * Remove an exposed port of the list
+     * Remove an exposed port of the list.
      *
      * @param $exposedPort
      */

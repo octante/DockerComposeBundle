@@ -30,7 +30,7 @@ class DockerComposeVolumes
     }
 
     /**
-     * Remove a volume from the list
+     * Remove a volume from the list.
      *
      * @param $volume
      */

@@ -26,11 +26,11 @@ class DockerComposeDevices
      */
     public function addDevice($device)
     {
-        $this->devices[$device] = "\"".$device."\"";
+        $this->devices[$device] = '"' . $device . '"';
     }
 
     /**
-     * Remove device from list
+     * Remove device from list.
      *
      * @param $device
      */

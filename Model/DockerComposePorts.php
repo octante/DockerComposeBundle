@@ -26,11 +26,11 @@ class DockerComposePorts
      */
     public function addPort($port)
     {
-        $this->ports[$port] = "\"".$port."\"";
+        $this->ports[$port] = '"' . $port . '"';
     }
 
     /**
-     * Remove a port from list
+     * Remove a port from list.
      *
      * @param $port
      */

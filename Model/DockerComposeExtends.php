@@ -11,7 +11,6 @@
 namespace Octante\DockerComposeBundle\Model;
 
 use Octante\DockerComposeBundle\Traits\DockerComposeList;
-use Octante\DockerComposeBundle\Exceptions\DockerComposeExtendsException;
 
 class DockerComposeExtends
 {
@@ -44,7 +43,7 @@ class DockerComposeExtends
     }
 
     /**
-     * Remove extend file name
+     * Remove extend file name.
      */
     public function removeExtendFileName()
     {
@@ -52,7 +51,7 @@ class DockerComposeExtends
     }
 
     /**
-     * Remove extend service name
+     * Remove extend service name.
      */
     public function removeExtendServiceName()
     {
@@ -81,8 +80,8 @@ class DockerComposeExtends
     public function __toString()
     {
         $value = "extends: \n";
-        $value .= "    file: " . $this->extendsFileName . "\n";
-        $value .= "    service: " . $this->extendsServiceName;
+        $value .= '    file: ' . $this->extendsFileName . "\n";
+        $value .= '    service: ' . $this->extendsServiceName;
 
         return $value;
     }

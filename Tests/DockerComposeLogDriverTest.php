@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeLogDriver;
 
 class DockerComposeLogDriverTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeLogDriver();
@@ -22,7 +24,7 @@ class DockerComposeLogDriverTest extends \PHPUnit_Framework_TestCase
     public function testSetLogDriver()
     {
         $this->sut->setLogDriver('json-file');
-        $expected = "\"json-file\"";
+        $expected = '"json-file"';
 
         $this->assertEquals($expected, $this->sut->getLogDriver());
     }
@@ -38,9 +40,9 @@ class DockerComposeLogDriverTest extends \PHPUnit_Framework_TestCase
     public function testAddLogOption()
     {
         $this->sut->addLogOption('address', 'tcp://192.168.0.42:123');
-        $expected = array(
-            'address' => "\"tcp://192.168.0.42:123\""
-        );
+        $expected = [
+            'address' => '"tcp://192.168.0.42:123"',
+        ];
 
         $this->assertEquals($expected, $this->sut->getLogOptions());
     }
@@ -57,7 +59,7 @@ class DockerComposeLogDriverTest extends \PHPUnit_Framework_TestCase
         $this->sut->addLogOption('address', 'tcp://192.168.0.42:123');
         $this->sut->removeLogOption('address');
 
-        $this->assertEquals(array(), $this->sut->getLogOptions());
+        $this->assertEquals([], $this->sut->getLogOptions());
     }
 
     public function testToString()
@@ -66,9 +68,8 @@ class DockerComposeLogDriverTest extends \PHPUnit_Framework_TestCase
         $this->sut->addLogOption('address', 'tcp://192.168.0.42:123');
         $expected = "log_driver: \"syslog\"\n" .
                     "log_opt: \n" .
-                    "    - address: \"tcp://192.168.0.42:123\"";
+                    '    - address: "tcp://192.168.0.42:123"';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -31,7 +31,7 @@ class DockerComposeCapabilityDrop
     }
 
     /**
-     * Remove capability from list
+     * Remove capability from list.
      *
      * @param $capability
      */

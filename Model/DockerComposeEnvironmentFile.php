@@ -27,7 +27,7 @@ class DockerComposeEnvironmentFile
     private $environmentFiles;
 
     /**
-     * Sets an environment file
+     * Sets an environment file.
      *
      * @param string $environmentFile
      */
@@ -37,7 +37,7 @@ class DockerComposeEnvironmentFile
     }
 
     /**
-     * Add new environment file
+     * Add new environment file.
      *
      * @param $environmentFile
      */
@@ -47,7 +47,7 @@ class DockerComposeEnvironmentFile
     }
 
     /**
-     * Remove an item from environment files
+     * Remove an item from environment files.
      */
     public function removeEnvironmentFile()
     {
@@ -85,7 +85,7 @@ class DockerComposeEnvironmentFile
     {
         $value = '';
         if ($this->environmentFile != null) {
-            $value .= "env_file: " . $this->environmentFile;
+            $value .= 'env_file: ' . $this->environmentFile;
         } else {
             $value .= $this->getFormattedList(
                 'env_file',

@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposePorts;
 
 class DockerComposePortsTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposePorts();
@@ -23,10 +25,10 @@ class DockerComposePortsTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addPort('3000');
         $this->sut->addPort('8000:8000');
-        $expected = array(
-            '3000' => "\"3000\"",
-            '8000:8000' => "\"8000:8000\""
-        );
+        $expected = [
+            '3000' => '"3000"',
+            '8000:8000' => '"8000:8000"',
+        ];
 
         $this->assertEquals($expected, $this->sut->getPorts());
     }
@@ -36,7 +38,7 @@ class DockerComposePortsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addPort('3000');
         $this->sut->addPort('8000:8000');
         $this->sut->removePort('8000:8000');
-        $expected = array('3000' => "\"3000\"");
+        $expected = ['3000' => '"3000"'];
 
         $this->assertEquals($expected, $this->sut->getPorts());
     }
@@ -47,9 +49,8 @@ class DockerComposePortsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addPort('8000:8000');
         $expected = "ports: \n" .
                     "    - \"3000\"\n" .
-                    "    - \"8000:8000\"";
+                    '    - "8000:8000"';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeDNS;
 
 class DockerComposeDNSTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeDNS();
@@ -37,7 +39,7 @@ class DockerComposeDNSTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addDNS('8.8.8.8');
         $this->sut->addDNS('8.8.8.9');
-        $expected = array('8.8.8.8' => '8.8.8.8', '8.8.8.9' => '8.8.8.9');
+        $expected = ['8.8.8.8' => '8.8.8.8', '8.8.8.9' => '8.8.8.9'];
 
         $this->assertEquals($expected, $this->sut->getDNSList());
     }
@@ -47,7 +49,7 @@ class DockerComposeDNSTest extends \PHPUnit_Framework_TestCase
         $this->sut->addDNS('8.8.8.8');
         $this->sut->addDNS('8.8.8.9');
         $this->sut->removeDNSItem('8.8.8.8');
-        $expected = array('8.8.8.9' => '8.8.8.9');
+        $expected = ['8.8.8.9' => '8.8.8.9'];
 
         $this->assertEquals($expected, $this->sut->getDNSList());
     }
@@ -58,9 +60,8 @@ class DockerComposeDNSTest extends \PHPUnit_Framework_TestCase
         $this->sut->addDNS('8.8.8.9');
         $expected = "dns: \n" .
                     "    - 8.8.8.8\n" .
-                    "    - 8.8.8.9";
+                    '    - 8.8.8.9';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

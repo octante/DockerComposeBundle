@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeExposedPorts;
 
 class DockerComposeExposedPortsTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeExposedPorts();
@@ -23,7 +25,7 @@ class DockerComposeExposedPortsTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addExposedPort('3000');
         $this->sut->addExposedPort('8000');
-        $expected = array('3000' => "\"3000\"", '8000' => "\"8000\"");
+        $expected = ['3000' => '"3000"', '8000' => '"8000"'];
 
         $this->assertEquals($expected, $this->sut->getExposedPorts());
     }
@@ -33,7 +35,7 @@ class DockerComposeExposedPortsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExposedPort('3000');
         $this->sut->addExposedPort('8000');
         $this->sut->removeExposedPort('8000');
-        $expected = array('3000' => "\"3000\"");
+        $expected = ['3000' => '"3000"'];
 
         $this->assertEquals($expected, $this->sut->getExposedPorts());
     }
@@ -44,9 +46,8 @@ class DockerComposeExposedPortsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExposedPort('8000');
         $expected = "expose: \n" .
                     "    - \"3000\"\n" .
-                    "    - \"8000\"";
+                    '    - "8000"';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -43,7 +43,7 @@ class DockerComposeDNSSearch
     }
 
     /**
-     * Remove dns value
+     * Remove dns value.
      */
     public function removeDNS()
     {
@@ -51,7 +51,7 @@ class DockerComposeDNSSearch
     }
 
     /**
-     * Remove dns from list
+     * Remove dns from list.
      *
      * @param $dns
      */
@@ -81,10 +81,10 @@ class DockerComposeDNSSearch
      */
     public function __toString()
     {
-        $value = "";
+        $value = '';
         if ($this->dns != null) {
             // Single value
-            $value .= "dns_search: " . $this->dns;
+            $value .= 'dns_search: ' . $this->dns;
         } elseif (!empty($this->dnsList)) {
             // List
             $value .= $this->getFormattedList(

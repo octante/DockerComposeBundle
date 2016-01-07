@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeDNSSearch;
 
 class DockerComposeDNSSearchTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeDNSSearch();
@@ -37,10 +39,10 @@ class DockerComposeDNSSearchTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addDNS('dc1.example.com');
         $this->sut->addDNS('dc2.example.com');
-        $expected = array(
+        $expected = [
             'dc1.example.com' => 'dc1.example.com',
-            'dc2.example.com' => 'dc2.example.com'
-        );
+            'dc2.example.com' => 'dc2.example.com',
+        ];
 
         $this->assertEquals($expected, $this->sut->getDNSList());
     }
@@ -50,7 +52,7 @@ class DockerComposeDNSSearchTest extends \PHPUnit_Framework_TestCase
         $this->sut->addDNS('dc1.example.com');
         $this->sut->addDNS('dc2.example.com');
         $this->sut->removeDNSItem('dc1.example.com');
-        $expected = array('dc2.example.com' => 'dc2.example.com');
+        $expected = ['dc2.example.com' => 'dc2.example.com'];
 
         $this->assertEquals($expected, $this->sut->getDNSList());
     }
@@ -61,7 +63,7 @@ class DockerComposeDNSSearchTest extends \PHPUnit_Framework_TestCase
         $this->sut->addDNS('dc2.example.com');
         $expected = "dns_search: \n" .
                     "    - dc1.example.com\n" .
-                    "    - dc2.example.com";
+                    '    - dc2.example.com';
 
         $this->assertEquals($expected, strval($this->sut));
     }
@@ -69,9 +71,8 @@ class DockerComposeDNSSearchTest extends \PHPUnit_Framework_TestCase
     public function testToString2()
     {
         $this->sut->setDNS('dc1.example.com');
-        $expected = "dns_search: dc1.example.com";
+        $expected = 'dns_search: dc1.example.com';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

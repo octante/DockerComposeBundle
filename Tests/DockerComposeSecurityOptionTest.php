@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeSecurityOption;
 
 class DockerComposeSecurityOptionTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeSecurityOption();
@@ -23,10 +25,10 @@ class DockerComposeSecurityOptionTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addSecurityOption('label:user:USER');
         $this->sut->addSecurityOption('label:role:ROLE');
-        $expected = array(
-            'label:user:USER' => "label:user:USER",
-            'label:role:ROLE' => "label:role:ROLE"
-        );
+        $expected = [
+            'label:user:USER' => 'label:user:USER',
+            'label:role:ROLE' => 'label:role:ROLE',
+        ];
 
         $this->assertEquals($expected, $this->sut->getSecurityOptions());
     }
@@ -36,7 +38,7 @@ class DockerComposeSecurityOptionTest extends \PHPUnit_Framework_TestCase
         $this->sut->addSecurityOption('label:user:USER');
         $this->sut->addSecurityOption('label:role:ROLE');
         $this->sut->removeSecurityOption('label:user:USER');
-        $expected = array('label:role:ROLE' => "label:role:ROLE");
+        $expected = ['label:role:ROLE' => 'label:role:ROLE'];
 
         $this->assertEquals($expected, $this->sut->getSecurityOptions());
     }
@@ -47,9 +49,8 @@ class DockerComposeSecurityOptionTest extends \PHPUnit_Framework_TestCase
         $this->sut->addSecurityOption('label:role:ROLE');
         $expected = "security_opt: \n" .
                     "    - label:user:USER\n" .
-                    "    - label:role:ROLE";
+                    '    - label:role:ROLE';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

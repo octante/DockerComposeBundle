@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeEnvironmentFile;
 
 class DockerComposeEnvironmentFileTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeEnvironmentFile();
@@ -37,10 +39,10 @@ class DockerComposeEnvironmentFileTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addEnvironmentFile('./common.env');
         $this->sut->addEnvironmentFile('./apps/web.env');
-        $expected = array(
+        $expected = [
             './common.env' => './common.env',
-            './apps/web.env' => './apps/web.env'
-        );
+            './apps/web.env' => './apps/web.env',
+        ];
 
         $this->assertEquals($expected, $this->sut->getEnvironmentFiles());
     }
@@ -50,7 +52,7 @@ class DockerComposeEnvironmentFileTest extends \PHPUnit_Framework_TestCase
         $this->sut->addEnvironmentFile('./common.env');
         $this->sut->addEnvironmentFile('./apps/web.env');
         $this->sut->removeEnvironmentFileItem('./common.env');
-        $expected = array('./apps/web.env' => './apps/web.env');
+        $expected = ['./apps/web.env' => './apps/web.env'];
 
         $this->assertEquals($expected, $this->sut->getEnvironmentFiles());
     }
@@ -58,7 +60,7 @@ class DockerComposeEnvironmentFileTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $this->sut->setEnvironmentFile('.env');
-        $expected = "env_file: .env";
+        $expected = 'env_file: .env';
 
         $this->assertEquals($expected, strval($this->sut));
     }
@@ -69,9 +71,8 @@ class DockerComposeEnvironmentFileTest extends \PHPUnit_Framework_TestCase
         $this->sut->addEnvironmentFile('./apps/web.env');
         $expected = "env_file: \n" .
                     "    - ./common.env\n" .
-                    "    - ./apps/web.env";
+                    '    - ./apps/web.env';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

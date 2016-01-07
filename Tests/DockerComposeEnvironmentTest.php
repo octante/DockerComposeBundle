@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeEnvironment;
 
 class DockerComposeEnvironmentTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeEnvironment();
@@ -23,10 +25,10 @@ class DockerComposeEnvironmentTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addEnvironment('RACK_ENV=development');
         $this->sut->addEnvironment('SESSION_SECRET');
-        $expected = array(
+        $expected = [
             'RACK_ENV=development' => 'RACK_ENV=development',
-            'SESSION_SECRET' => 'SESSION_SECRET'
-        );
+            'SESSION_SECRET' => 'SESSION_SECRET',
+        ];
 
         $this->assertEquals($expected, $this->sut->getEnvironment());
     }
@@ -36,7 +38,7 @@ class DockerComposeEnvironmentTest extends \PHPUnit_Framework_TestCase
         $this->sut->addEnvironment('RACK_ENV=development');
         $this->sut->addEnvironment('SESSION_SECRET');
         $this->sut->removeEnvironment('RACK_ENV=development');
-        $expected = array('SESSION_SECRET' => 'SESSION_SECRET');
+        $expected = ['SESSION_SECRET' => 'SESSION_SECRET'];
 
         $this->assertEquals($expected, $this->sut->getEnvironment());
     }
@@ -47,9 +49,8 @@ class DockerComposeEnvironmentTest extends \PHPUnit_Framework_TestCase
         $this->sut->addEnvironment('SESSION_SECRET');
         $expected = "environment: \n" .
                     "    - RACK_ENV=development\n" .
-                    "    - SESSION_SECRET";
+                    '    - SESSION_SECRET';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

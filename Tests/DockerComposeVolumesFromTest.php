@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeVolumesFrom;
 
 class DockerComposeVolumesFromTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeVolumesFrom();
@@ -23,10 +25,10 @@ class DockerComposeVolumesFromTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addVolumeFrom('service_name');
         $this->sut->addVolumeFrom('container_name');
-        $expected = array(
-            'service_name' => "service_name",
-            'container_name' => "container_name"
-        );
+        $expected = [
+            'service_name' => 'service_name',
+            'container_name' => 'container_name',
+        ];
 
         $this->assertEquals($expected, $this->sut->getVolumesFrom());
     }
@@ -36,7 +38,7 @@ class DockerComposeVolumesFromTest extends \PHPUnit_Framework_TestCase
         $this->sut->addVolumeFrom('service_name');
         $this->sut->addVolumeFrom('container_name');
         $this->sut->removeVolumeFrom('service_name');
-        $expected = array('container_name' => "container_name");
+        $expected = ['container_name' => 'container_name'];
 
         $this->assertEquals($expected, $this->sut->getVolumesFrom());
     }
@@ -47,9 +49,8 @@ class DockerComposeVolumesFromTest extends \PHPUnit_Framework_TestCase
         $this->sut->addVolumeFrom('container_name');
         $expected = "volumes_from: \n" .
                     "    - service_name\n" .
-                    "    - container_name";
+                    '    - container_name';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -30,7 +30,7 @@ class DockerComposeLinks
     }
 
     /**
-     * Remove link from list
+     * Remove link from list.
      *
      * @param $link
      */

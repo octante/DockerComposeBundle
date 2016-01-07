@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeVolumes;
 
 class DockerComposeVolumesTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeVolumes();
@@ -23,10 +25,10 @@ class DockerComposeVolumesTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addVolume('/var/lib/mysql');
         $this->sut->addVolume('./cache:/tmp/cache');
-        $expected = array(
-            '/var/lib/mysql' => "/var/lib/mysql",
-            './cache:/tmp/cache' => "./cache:/tmp/cache"
-        );
+        $expected = [
+            '/var/lib/mysql' => '/var/lib/mysql',
+            './cache:/tmp/cache' => './cache:/tmp/cache',
+        ];
 
         $this->assertEquals($expected, $this->sut->getVolumes());
     }
@@ -36,7 +38,7 @@ class DockerComposeVolumesTest extends \PHPUnit_Framework_TestCase
         $this->sut->addVolume('/var/lib/mysql');
         $this->sut->addVolume('./cache:/tmp/cache');
         $this->sut->removeVolume('/var/lib/mysql');
-        $expected = array('./cache:/tmp/cache' => "./cache:/tmp/cache");
+        $expected = ['./cache:/tmp/cache' => './cache:/tmp/cache'];
 
         $this->assertEquals($expected, $this->sut->getVolumes());
     }
@@ -47,9 +49,8 @@ class DockerComposeVolumesTest extends \PHPUnit_Framework_TestCase
         $this->sut->addVolume('./cache:/tmp/cache');
         $expected = "volumes: \n" .
                     "    - /var/lib/mysql\n" .
-                    "    - ./cache:/tmp/cache";
+                    '    - ./cache:/tmp/cache';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

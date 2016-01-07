@@ -10,7 +10,6 @@
 
 namespace Octante\DockerComposeBundle\Tests;
 
-
 use Octante\DockerComposeBundle\Model\DockerComposeCapabilityDrop;
 
 class DockerComposeCapabilityDropTest extends \PHPUnit_Framework_TestCase
@@ -25,7 +24,7 @@ class DockerComposeCapabilityDropTest extends \PHPUnit_Framework_TestCase
     public function testAddCapabilityDrop()
     {
         $this->sut->addcapabilityDrop('ALL');
-        $expected = array('ALL' => 'ALL');
+        $expected = ['ALL' => 'ALL'];
 
         $this->assertEquals($expected, $this->sut->getCapabilityDrop());
     }
@@ -35,7 +34,7 @@ class DockerComposeCapabilityDropTest extends \PHPUnit_Framework_TestCase
         $this->sut->addcapabilityDrop('ALL');
         $this->sut->addcapabilityDrop('ALL2');
         $this->sut->removecapabilityDrop('ALL2');
-        $expected = array('ALL' => 'ALL');
+        $expected = ['ALL' => 'ALL'];
 
         $this->assertEquals($expected, $this->sut->getCapabilityDrop());
     }
@@ -46,9 +45,8 @@ class DockerComposeCapabilityDropTest extends \PHPUnit_Framework_TestCase
         $this->sut->addcapabilityDrop('ALL2');
         $expected = "cap_drop: \n" .
                     "    - ALL\n" .
-                    "    - ALL2";
+                    '    - ALL2';
 
         $this->assertEquals($expected, strval($this->sut));
-
     }
 }

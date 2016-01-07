@@ -12,7 +12,6 @@ namespace Octante\DockerComposeBundle\Model;
 
 use Octante\DockerComposeBundle\Exceptions\DockerComposeInvalidLogDriverException;
 use Octante\DockerComposeBundle\Traits\DockerComposeList;
-use Octante\DockerComposeBundle\ValueObject\LogDriverType;
 
 class DockerComposeLogDriver
 {
@@ -31,11 +30,11 @@ class DockerComposeLogDriver
     /**
      * @var array
      */
-    private $logDriverTypes = array(
-        "json-file",
-        "syslog",
-        "none"
-    );
+    private $logDriverTypes = [
+        'json-file',
+        'syslog',
+        'none',
+    ];
 
     /**
      * @param $logDriver
@@ -48,7 +47,7 @@ class DockerComposeLogDriver
             throw new DockerComposeInvalidLogDriverException();
         }
 
-        $this->logDriver = "\"".$logDriver."\"";
+        $this->logDriver = '"' . $logDriver . '"';
     }
 
     /**
@@ -57,11 +56,11 @@ class DockerComposeLogDriver
      */
     public function addLogOption($logOptionKey, $logOptionValue)
     {
-        $this->logOptions[$logOptionKey] = "\"".$logOptionValue."\"";
+        $this->logOptions[$logOptionKey] = '"' . $logOptionValue . '"';
     }
 
     /**
-     * Remove log driver
+     * Remove log driver.
      */
     public function removeLogDriver()
     {
@@ -69,7 +68,7 @@ class DockerComposeLogDriver
     }
 
     /**
-     * Remove a log option from list
+     * Remove a log option from list.
      */
     public function removeLogOption($logOptionKey)
     {
@@ -99,7 +98,7 @@ class DockerComposeLogDriver
     {
         $value = '';
         if ($this->logDriver != null) {
-            $value = "log_driver: " . $this->logDriver . "\n";
+            $value = 'log_driver: ' . $this->logDriver . "\n";
         }
 
         $value .= $this->getFormattedList('log_opt', $this->logOptions, true);

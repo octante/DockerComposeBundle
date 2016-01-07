@@ -10,7 +10,6 @@
 
 namespace Octante\DockerComposeBundle\Tests;
 
-
 use Octante\DockerComposeBundle\Model\DockerComposeCapabilityAdd;
 
 class DockerComposeCapabilityAddTest extends \PHPUnit_Framework_TestCase
@@ -25,7 +24,7 @@ class DockerComposeCapabilityAddTest extends \PHPUnit_Framework_TestCase
     public function testAddCapabilityAdd()
     {
         $this->sut->addcapabilityAdd('ALL');
-        $expected = array('ALL' => 'ALL');
+        $expected = ['ALL' => 'ALL'];
 
         $this->assertEquals($expected, $this->sut->getCapabilityAdd());
     }
@@ -35,7 +34,7 @@ class DockerComposeCapabilityAddTest extends \PHPUnit_Framework_TestCase
         $this->sut->addcapabilityAdd('ALL');
         $this->sut->addcapabilityAdd('ALL2');
         $this->sut->removecapabilityAdd('ALL2');
-        $expected = array('ALL' => 'ALL');
+        $expected = ['ALL' => 'ALL'];
 
         $this->assertEquals($expected, $this->sut->getCapabilityAdd());
     }
@@ -46,9 +45,8 @@ class DockerComposeCapabilityAddTest extends \PHPUnit_Framework_TestCase
         $this->sut->addcapabilityAdd('ALL2');
         $expected = "cap_add: \n" .
                     "    - ALL\n" .
-                    "    - ALL2";
+                    '    - ALL2';
 
         $this->assertEquals($expected, strval($this->sut));
-
     }
 }

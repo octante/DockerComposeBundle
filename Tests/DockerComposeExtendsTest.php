@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeExtends;
 
 class DockerComposeExtendsTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeExtends();
@@ -47,9 +49,8 @@ class DockerComposeExtendsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExtendServiceName('webapp');
         $expected = "extends: \n" .
                     "    file: common.yml\n" .
-                    "    service: webapp";
+                    '    service: webapp';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

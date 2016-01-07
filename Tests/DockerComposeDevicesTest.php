@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeDevices;
 
 class DockerComposeDevicesTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeDevices();
@@ -22,7 +24,7 @@ class DockerComposeDevicesTest extends \PHPUnit_Framework_TestCase
     public function testAddDevice()
     {
         $this->sut->addDevice('/dev/ttyUSB0:/dev/ttyUSB0');
-        $expected = array('/dev/ttyUSB0:/dev/ttyUSB0' => "\"/dev/ttyUSB0:/dev/ttyUSB0\"");
+        $expected = ['/dev/ttyUSB0:/dev/ttyUSB0' => '"/dev/ttyUSB0:/dev/ttyUSB0"'];
 
         $this->assertEquals($expected, $this->sut->getDevices());
     }
@@ -32,7 +34,7 @@ class DockerComposeDevicesTest extends \PHPUnit_Framework_TestCase
         $this->sut->addDevice('/dev/ttyUSB0:/dev/ttyUSB0');
         $this->sut->addDevice('/dev/ttyUSB0:/dev/ttyUSB1');
         $this->sut->removeDevice('/dev/ttyUSB0:/dev/ttyUSB1');
-        $expected = array('/dev/ttyUSB0:/dev/ttyUSB0' => "\"/dev/ttyUSB0:/dev/ttyUSB0\"");
+        $expected = ['/dev/ttyUSB0:/dev/ttyUSB0' => '"/dev/ttyUSB0:/dev/ttyUSB0"'];
 
         $this->assertEquals($expected, $this->sut->getDevices());
     }
@@ -41,9 +43,8 @@ class DockerComposeDevicesTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addDevice('/dev/ttyUSB0:/dev/ttyUSB0');
         $expected = "devices: \n" .
-                    "    - \"/dev/ttyUSB0:/dev/ttyUSB0\"";
+                    '    - "/dev/ttyUSB0:/dev/ttyUSB0"';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

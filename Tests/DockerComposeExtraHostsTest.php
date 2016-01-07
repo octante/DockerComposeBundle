@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeExtraHosts;
 
 class DockerComposeExtraHostsTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeExtraHosts();
@@ -23,10 +25,10 @@ class DockerComposeExtraHostsTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addExtraHost('somehost:162.242.195.82');
         $this->sut->addExtraHost('otherhost:50.31.209.229');
-        $expected = array(
-            'somehost:162.242.195.82' => "\"somehost:162.242.195.82\"",
-            'otherhost:50.31.209.229' => "\"otherhost:50.31.209.229\""
-        );
+        $expected = [
+            'somehost:162.242.195.82' => '"somehost:162.242.195.82"',
+            'otherhost:50.31.209.229' => '"otherhost:50.31.209.229"',
+        ];
 
         $this->assertEquals($expected, $this->sut->getExtraHosts());
     }
@@ -36,7 +38,7 @@ class DockerComposeExtraHostsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExtraHost('somehost:162.242.195.82');
         $this->sut->addExtraHost('otherhost:50.31.209.229');
         $this->sut->removeExtraHost('otherhost:50.31.209.229');
-        $expected = array('somehost:162.242.195.82' => "\"somehost:162.242.195.82\"");
+        $expected = ['somehost:162.242.195.82' => '"somehost:162.242.195.82"'];
 
         $this->assertEquals($expected, $this->sut->getExtraHosts());
     }
@@ -47,9 +49,8 @@ class DockerComposeExtraHostsTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExtraHost('otherhost:50.31.209.229');
         $expected = "extra_hosts: \n" .
                     "    - \"somehost:162.242.195.82\"\n" .
-                    "    - \"otherhost:50.31.209.229\"";
+                    '    - "otherhost:50.31.209.229"';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -73,7 +73,7 @@ class DockerComposeYmlPlain
     {
         $value = '';
         if ($parameter != '') {
-            $value =  $parameter . "\n\n";
+            $value = $parameter . "\n\n";
         }
 
         return $value;

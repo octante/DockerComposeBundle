@@ -26,11 +26,11 @@ class DockerComposeExtraHosts
      */
     public function addExtraHost($extraHost)
     {
-        $this->extraHosts[$extraHost] = "\"".$extraHost."\"";
+        $this->extraHosts[$extraHost] = '"' . $extraHost . '"';
     }
 
     /**
-     * Remove extra host
+     * Remove extra host.
      */
     public function removeExtraHost($extraHost)
     {

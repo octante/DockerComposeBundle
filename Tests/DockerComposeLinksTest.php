@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeLinks;
 
 class DockerComposeLinksTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeLinks();
@@ -23,10 +25,10 @@ class DockerComposeLinksTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addLink('db');
         $this->sut->addLink('db:database');
-        $expected = array(
-            'db' => "db",
-            'db:database' => "db:database"
-        );
+        $expected = [
+            'db' => 'db',
+            'db:database' => 'db:database',
+        ];
 
         $this->assertEquals($expected, $this->sut->getLinks());
     }
@@ -36,7 +38,7 @@ class DockerComposeLinksTest extends \PHPUnit_Framework_TestCase
         $this->sut->addLink('db');
         $this->sut->addLink('db:database');
         $this->sut->removeLink('db:database');
-        $expected = array('db' => "db");
+        $expected = ['db' => 'db'];
 
         $this->assertEquals($expected, $this->sut->getLinks());
     }
@@ -47,9 +49,8 @@ class DockerComposeLinksTest extends \PHPUnit_Framework_TestCase
         $this->sut->addLink('db:database');
         $expected = "links: \n" .
                     "    - db\n" .
-                    "    - db:database";
+                    '    - db:database';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 

@@ -30,7 +30,7 @@ class DockerComposeEnvironment
     }
 
     /**
-     * Remove an environment from the list
+     * Remove an environment from the list.
      *
      * @param $environment
      */

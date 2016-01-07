@@ -30,7 +30,7 @@ class DockerComposeSecurityOption
     }
 
     /**
-     * Remove security option from list
+     * Remove security option from list.
      *
      * @param $securityOption
      */

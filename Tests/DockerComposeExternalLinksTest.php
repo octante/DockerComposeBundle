@@ -14,6 +14,8 @@ use Octante\DockerComposeBundle\Model\DockerComposeExternalLinks;
 
 class DockerComposeExternalLinksTest extends \PHPUnit_Framework_TestCase
 {
+    private $sut;
+
     public function setUp()
     {
         $this->sut = new DockerComposeExternalLinks();
@@ -23,10 +25,10 @@ class DockerComposeExternalLinksTest extends \PHPUnit_Framework_TestCase
     {
         $this->sut->addExternalLink('redis_1');
         $this->sut->addExternalLink('project_db_1:mysql');
-        $expected = array(
-            'redis_1' => "redis_1",
-            'project_db_1:mysql' => "project_db_1:mysql"
-        );
+        $expected = [
+            'redis_1' => 'redis_1',
+            'project_db_1:mysql' => 'project_db_1:mysql',
+        ];
 
         $this->assertEquals($expected, $this->sut->getExternalLinks());
     }
@@ -36,7 +38,7 @@ class DockerComposeExternalLinksTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExternalLink('redis_1');
         $this->sut->addExternalLink('project_db_1:mysql');
         $this->sut->removeExternalLink('redis_1');
-        $expected = array('project_db_1:mysql' => "project_db_1:mysql");
+        $expected = ['project_db_1:mysql' => 'project_db_1:mysql'];
 
         $this->assertEquals($expected, $this->sut->getExternalLinks());
     }
@@ -47,9 +49,8 @@ class DockerComposeExternalLinksTest extends \PHPUnit_Framework_TestCase
         $this->sut->addExternalLink('project_db_1:mysql');
         $expected = "external_links: \n" .
                     "    - redis_1\n" .
-                    "    - project_db_1:mysql";
+                    '    - project_db_1:mysql';
 
         $this->assertEquals($expected, strval($this->sut));
     }
 }
- 
